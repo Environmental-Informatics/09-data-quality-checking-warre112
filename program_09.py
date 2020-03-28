@@ -147,54 +147,54 @@ if __name__ == '__main__':
     
 
 #Read Data
-    ReadData('DataQualityChecking.txt')
+        ReadData('DataQualityChecking.txt')
 
 #Create copy of raw data
-    colNames = ['Date','Precip','Max Temp', 'Min Temp','Wind Speed']
-    Raw = pd.read_csv("DataQualityChecking.txt",header=None, names=colNames,  
+        colNames = ['Date','Precip','Max Temp', 'Min Temp','Wind Speed']
+        Raw = pd.read_csv("DataQualityChecking.txt",header=None, names=colNames,  
                          delimiter=r"\s+",parse_dates=[0])
-    Raw = Raw.set_index('Date')
+        Raw = Raw.set_index('Date')
 
 
 #Plot Data
-    import matplotlib.pyplot as plt
+        import matplotlib.pyplot as plt
 ##Precipitation 
-    plt.plot(DataDF.index, Raw['Precip'],'b*', label='Raw Data')
-    plt.plot(DataDF.index, DataDF['Precip'],'r*', label='After Data Quality')
-    plt.xlabel('Date')
-    plt.ylabel('Precipitation (mm)')
-    plt.legend()
-    plt.savefig('Precipitation.png')
+        plt.plot(DataDF.index, Raw['Precip'],'b*', label='Raw Data')
+        plt.plot(DataDF.index, DataDF['Precip'],'r*', label='After Data Quality')
+        plt.xlabel('Date')
+        plt.ylabel('Precipitation (mm)')
+        plt.legend()
+        plt.savefig('Precipitation.png')
 
 
 ##Max Temp
-    plt.plot(DataDF.index, Raw['Max Temp'],'b*', label='Raw Data')
-    plt.plot(DataDF.index, DataDF['Max Temp'],'r*', label='After Data Quality')
-    plt.xlabel('Date')
-    plt.ylabel('Maximum Temperature (C)')
-    plt.legend()
-    plt.savefig('MaxTemp.png')
+        plt.plot(DataDF.index, Raw['Max Temp'],'b*', label='Raw Data')
+        plt.plot(DataDF.index, DataDF['Max Temp'],'r*', label='After Data Quality')
+        plt.xlabel('Date')
+        plt.ylabel('Maximum Temperature (C)')
+        plt.legend()
+        plt.savefig('MaxTemp.png')
 
 
 ##Min Temp
-    plt.plot(DataDF.index, Raw['Min Temp'],'b*', label='Raw Data')
-    plt.plot(DataDF.index, DataDF['Min Temp'],'r*', label='After Data Quality')
-    plt.xlabel('Date')
-    plt.ylabel('Minimum Temperature (C)')
-    plt.legend()
-    plt.savefig('MinTemp.png')
+        plt.plot(DataDF.index, Raw['Min Temp'],'b*', label='Raw Data')
+        plt.plot(DataDF.index, DataDF['Min Temp'],'r*', label='After Data Quality')
+        plt.xlabel('Date')
+        plt.ylabel('Minimum Temperature (C)')
+        plt.legend()
+        plt.savefig('MinTemp.png')
 
 
 ##Wind Speed
-    plt.plot(DataDF.index, Raw['Wind Speed'],'b*', label='Raw Data')
-    plt.plot(DataDF.index, DataDF['Wind Speed'],'r*', label='After Data Quality')
-    plt.xlabel('Date')
-    plt.ylabel('Wind Speed (m/s)')
-    plt.legend()
-    plt.savefig('WindSpeed.png')
+        plt.plot(DataDF.index, Raw['Wind Speed'],'b*', label='Raw Data')
+        plt.plot(DataDF.index, DataDF['Wind Speed'],'r*', label='After Data Quality')
+        plt.xlabel('Date')
+        plt.ylabel('Wind Speed (m/s)')
+        plt.legend()
+        plt.savefig('WindSpeed.png')
 
 
 #Wrtie Data to TAB Deliniated Files
-    DataDF.to_csv('After_DataQuality.txt', sep='\t', index=True)
+        DataDF.to_csv('After_DataQuality.txt', sep='\t', index=True)
 
-    ReplacedValuesDF.to_csv('ReplacedValues.txt', sep='\t', index=True)
+        ReplacedValuesDF.to_csv('ReplacedValues.txt', sep='\t', index=True)
